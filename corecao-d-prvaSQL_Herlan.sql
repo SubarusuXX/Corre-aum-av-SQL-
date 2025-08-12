@@ -127,54 +127,46 @@ SELECT
     WHERE
     clientes.nome LIKE 'b%';
 
--- E --
-Na
-
+-- E --  CORRIGIDO
+SELECT * FROM reservas 
+WHERE data_entrada BETWEEN '2023-05-01' AND '2023-05-31';
 
 --------------------------------N4-----------------------------------
 
 -- A --
 SELECT
- quartos
-    COUNT (*)
+    COUNT(*)
     FROM quartos;
-
 -- B --
-SELECT
- quartos,
-    COUNT (numero)
-    FROM quartos;
+    SELECT MAX(capacidade)
+    from quartos;
 -- C --
-
+SELECT MIN(capacidade)
+    from quartos;
 -- D --
-SELECT
-AVG (capacidade)
+SELECT AVG (capacidade)
 FROM 
     quartos;
 
 -- E --
 SELECT
-quartos,
 COUNT(*)
 FROM 
-    vista_mar;
+    quartos
+    WHERE vista_mar = "1";
 
 
 
 --------------------------------N5-----------------------------------
 
 -- A --
-SELECT quartos.id
-ORDER BY quartos.diaria DESC;
--- B --
-
--- C --
-
--- D --
-
--- E --
-
-
+SELECT * 
+FROM QUARTOS
+ORDER BY DIARIA DESC;
+--B --
+SELECT *
+FROM QUARTOS
+ORDER BY DIARIA ASC;
 
 --------------------------------N6-----------------------------------
 
@@ -184,10 +176,9 @@ ADD COLUMN cupom VARCHAR(5);
 
 -- B --
 
-UPDATE reservas SET id = 1 WHERE cupom = 'LGTSP';
-UPDATE reservas SET id = 2 WHERE cupom = 'XGTSP';
-UPDATE reservas SET id = 4 WHERE cupom = 'GTSQL';
-
+UPDATE reservas SET cupom = 'LGTSP' WHERE id = 1; 
+UPDATE reservas SET cupom = 'XGTSP' WHERE id = 2;
+UPDATE reservas SET cupom = 'GTSQL' WHERE id = 4;     
 
 --------------------------------N7-----------------------------------
 SELECT*
